@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_connect/type_of_user.dart';
 import 'login_page.dart';
 import 'register_page.dart';
 
@@ -58,7 +59,7 @@ class _StartPageState extends State<StartPage> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
+                    builder: (context) => TypeOfUserPage(),
                   ));
                 },
                 child: Text('Login'),
