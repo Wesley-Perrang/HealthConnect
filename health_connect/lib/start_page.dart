@@ -72,6 +72,14 @@ class _StartPageState extends State<StartPage> {
                 },
                 child: Text('Register'),
               ),
+              SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () {
+                  // Implement the action for the emergency services button here
+                  // You can navigate to a medical services screen or perform any desired action.
+                },
+                child: Text('Emergency Services'),
+              ),
             ],
           ),
         ),
