@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
               leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
-                // Navigate to the SettingsScreen or your desired screen
+                // Navigate to the SettingsScreen
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SettingsPage()),
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
               leading: Icon(Icons.verified_user),
               title: Text('User'),
               onTap: () {
-                // Navigate to the NotificationsScreen or your desired screen
+                // Navigate to the UserPage
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => UserPage()),
@@ -97,10 +97,51 @@ class HomePage extends StatelessWidget {
               child: Text('Your content goes here'),
             ),
           ),
+          SizedBox(height: 40), // Add spacing between the content and the button
+          ElevatedButton(
+            onPressed: () {
+              // Implement the action for the medical services button here
+              // You can navigate to a medical services screen or perform any desired action.
+            },
+            child: Text('Medical Services'),
+          ),
         ],
       ),
     );
   }
 }
 
-// Define HomeScreen, SettingsScreen, and UserPage as shown in your previous code.
+// Define SettingsPage and UserPage as separate StatelessWidget classes.
+class SettingsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+      ),
+      body: Center(
+        child: Text('Settings Page Content'),
+      ),
+    );
+  }
+}
+
+class UserPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('User Page'),
+      ),
+      body: Center(
+        child: Text('User Page Content'),
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: HomePage(),
+  ));
+}
