@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:health_connect/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -15,7 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
-  void _register() {
+  Future<void> _register() async {
     final String firstName = _firstNameController.text;
     final String lastName = _lastNameController.text;
     final String email = _emailController.text;
@@ -23,17 +26,29 @@ class _RegisterPageState extends State<RegisterPage> {
     final String phone = _phoneController.text;
     final String password = _passwordController.text;
 
-    // Here, you can implement the registration logic
-    // For simplicity, let's print the user's information
-    print('First Name: $firstName');
-    print('Last Name: $lastName');
-    print('Email: $email');
-    print('Username: $username');
-    print('Phone: $phone');
-    print('Password: $password');
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-    // You can add your registration logic here to create a new user account
-    // For example, you could make an API call to your backend server to register the user.
+      if (userCredential.user != null) {
+        // Registration successful
+        // You can navigate to another screen or show a success message here
+        print('Registration successful: ${userCredential.user!.uid}');
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => LoginPage(),
+      ));
+      } else {
+        // Registration failed
+        // You can handle errors and display appropriate messages
+        print('Registration failed');
+      }
+    } catch (e) {
+      // Handle any errors that occur during registration
+      print('Error during registration: $e');
+    }
   }
 
   @override
@@ -90,4 +105,12 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MaterialApp(
+    home: RegisterPage(),
+  ));
 }
