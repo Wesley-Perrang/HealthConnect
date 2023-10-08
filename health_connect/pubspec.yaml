@@ -44,6 +44,7 @@ dependencies:
   rflutter_alert: ^2.0.7
   # alan_voice: ^4.4.0
   # firebase_phone_auth: ^latest_version
+  flutter_native_splash: ^2.3.3 
   firebase_phone_auth_handler: ^1.0.8
   speech_to_text: ^6.3.0
   highlight_text: ^1.7.0
