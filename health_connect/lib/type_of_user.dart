@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';
+import 'package:health_connect/type_of_patient.dart';
+import 'login_page_provaders.dart';
 
 class TypeOfUserPage extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class TypeOfUserPage extends StatelessWidget {
                 // Navigate to the login page for Patients
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => LoginPage(),
+                    builder: (context) => PatientTypePage(),
                   ),
                 );
               },

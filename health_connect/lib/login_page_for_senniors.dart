@@ -1,16 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:health_connect/home_page.dart';
+import 'package:health_connect/home_page_seniors.dart';
+import 'package:health_connect/voice_command_for_senoirs.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPageForSeniors extends StatefulWidget {
+  const LoginPageForSeniors({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPageForSeniors> createState() => _LoginPageForSeniorsState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageForSeniorsState extends State<LoginPageForSeniors> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -29,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
         // You can navigate to the home screen or perform other actions here
         print('Login successful: ${userCredential.user!.uid}');
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => VoiceCommandPageForSeniors(),
           ));
       } else {
         // Login failed
@@ -82,6 +83,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MaterialApp(
-    home: LoginPage(),
+    home: LoginPageForSeniors(),
   ));
 }

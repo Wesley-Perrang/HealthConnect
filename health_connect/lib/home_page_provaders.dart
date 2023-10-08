@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:health_connect/map_page.dart';
 import 'package:health_connect/settings_page.dart';
 import 'package:health_connect/user_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePageProvader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
                 // Navigate to the HomeScreen or your desired screen
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
+                  MaterialPageRoute(builder: (context) => HomePageProvader()),
                 );
               },
             ),
@@ -111,6 +112,15 @@ class HomePage extends StatelessWidget {
   }
 }
 
+
+  void _navigateToMap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => MapPage(),
+      ),
+    );
+  }
+
 // Define SettingsPage and UserPage as separate StatelessWidget classes.
 class SettingsPage extends StatelessWidget {
   @override
@@ -142,6 +152,6 @@ class UserPage extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(
-    home: HomePage(),
+    home: HomePageProvader(),
   ));
 }

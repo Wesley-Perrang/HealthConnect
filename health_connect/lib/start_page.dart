@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'type_of_user.dart';
-import 'login_page.dart';
+import 'login_page_provaders.dart';
 import 'register_page.dart';
+import 'emergency_page.dart'; // Import your emergency_page.dart
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -41,28 +42,11 @@ class _StartPageState extends State<StartPage> {
           Image.asset(
             'assets/Caduceus.png', // Replace with the path to your image
             fit: BoxFit.cover,
-            // width: double.infinity,
-            // height: double.infinity,
           ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // DropdownButton for language selection
-                DropdownButton<String>(
-                  value: selectedLanguage,
-                  onChanged: (newValue) {
-                    setState(() {
-                      selectedLanguage = newValue!;
-                    });
-                  },
-                  items: languages.map((language) {
-                    return DropdownMenuItem(
-                      value: language,
-                      child: Text(language),
-                    );
-                  }).toList(),
-                ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
@@ -83,10 +67,27 @@ class _StartPageState extends State<StartPage> {
                 SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {
-                    // Implement the action for the emergency services button here
-                    // You can navigate to a medical services screen or perform any desired action.
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => EmergencyPage(), // Navigate to EmergencyPage
+                    ));
                   },
                   child: Text('Emergency Services'),
+                ),
+                SizedBox(height: 16.0), // Add spacing between buttons and language dropdown
+                // DropdownButton for language selection
+                DropdownButton<String>(
+                  value: selectedLanguage,
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedLanguage = newValue!;
+                    });
+                  },
+                  items: languages.map((language) {
+                    return DropdownMenuItem(
+                      value: language,
+                      child: Text(language),
+                    );
+                  }).toList(),
                 ),
               ],
             ),
