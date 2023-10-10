@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_connect/map_page.dart';
 import 'package:health_connect/settings_page.dart';
 import 'package:health_connect/user_page.dart';
+import 'package:health_connect/booking_page.dart'; // Import your booking page
 
 class HomePageProvader extends StatelessWidget {
   @override
@@ -101,25 +102,20 @@ class HomePageProvader extends StatelessWidget {
           SizedBox(height: 40), // Add spacing between the content and the button
           ElevatedButton(
             onPressed: () {
-              // Implement the action for the medical services button here
-              // You can navigate to a medical services screen or perform any desired action.
+              // Implement the action for the "Book Appointment" button here
+              // Navigate to the booking page
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BookingPage()), // Navigate to the booking page
+              );
             },
-            child: Text('Medical Services'),
+            child: Text('Book Appointment'),
           ),
         ],
       ),
     );
   }
 }
-
-
-  void _navigateToMap(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => MapPage(),
-      ),
-    );
-  }
 
 // Define SettingsPage and UserPage as separate StatelessWidget classes.
 class SettingsPage extends StatelessWidget {
